@@ -6,7 +6,7 @@ which is still available as part of the archived [UMD Terp Base repository](http
 This module provides a customized sidebar menu.
 
 This module contains markup only (no js or css), those should be provided
-by the Single Directory Component.
+by the theme or relevant Single Directory Component.
 
 ## Configuration
 
