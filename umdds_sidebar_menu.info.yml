@@ -1,0 +1,5 @@
+name: 'UMDDS: Sidebar Menu'
+type: module
+description: Custom sidebar menu intended for creating submenus.
+core_version_requirement: ^11
+package: UMDDS

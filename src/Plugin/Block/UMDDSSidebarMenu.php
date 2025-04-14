@@ -100,7 +100,7 @@ class UMDDSSidebarMenu extends BlockBase {
     $menu = $menu_tree->build($tree);
 
     // Set custom theme in order to template.
-    $menu['#theme'] = 'umd_terp_sidebar_menu__main';
+    $menu['#theme'] = 'umdds_sidebar_menu__main';
 
     // Pass template, parent, and rendered menu.
     $build['#markup'] = \Drupal::service('renderer')->render($menu);
