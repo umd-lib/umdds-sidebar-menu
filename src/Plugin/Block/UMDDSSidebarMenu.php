@@ -6,6 +6,8 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\system\Entity\Menu;
+use Drupal\Core\Block\Attribute\Block;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * UMDDS Sidebar Menu Block.
@@ -59,6 +61,16 @@ class UMDDSSidebarMenu extends BlockBase {
   /**
    * {@inheritdoc}
    */
+  public function defaultConfiguration() {
+    return [
+      'menu_name' => 'main',
+      'show_parent' => 1,
+    ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function build() {
     // Enable url-wise caching.
     $build = [
@@ -102,9 +114,6 @@ class UMDDSSidebarMenu extends BlockBase {
     // Set custom theme in order to template.
     $menu['#theme'] = 'umdds_sidebar_menu__main';
 
-    // Pass template, parent, and rendered menu.
-    $build['#markup'] = \Drupal::service('renderer')->render($menu);
-
     if ($show_parent) {
       // Get parent link title and URL to display as "back link". Manually set Home for first level pages.
       $parent = [];
@@ -117,21 +126,14 @@ class UMDDSSidebarMenu extends BlockBase {
         $parent['#title'] = 'Home';
         $parent['#link'] = '/';
       }
-      $build['#parent'] = $parent;
+      $menu['#top_parent'] = $parent;
     }
+
+    // Pass template, parent, and rendered menu.
+    $build['#markup'] = \Drupal::service('renderer')->render($menu);
 
     return $build;
 
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function defaultConfiguration() {
-    return [
-      'menu_name' => 'main',
-      'show_parent' => 1,
-    ];
   }
 
 }

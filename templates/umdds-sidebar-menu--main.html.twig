@@ -4,6 +4,7 @@
  * Theme override to display the standard Sidebar Menu.
  *
  * Available variables:
+ * - top_parent: parent element in menu trail
  * - menu_name: The machine name of the menu.
  * - items: A nested list of menu items. Each menu item contains:
  *   - attributes: HTML attributes for the menu item.
@@ -20,12 +21,20 @@
 #}
 {% import _self as menus %}
 
-
 {#
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0) }}
+<nav class="subnav" aria-label="Sidebar">
+  <ul>
+    {% if top_parent %}
+      <li class="subnav-parent">
+        <a href="{{ top_parent['#link'] }}">{{ top_parent['#title'] }}</a>
+      </li>
+    {% endif %}
+    {{ menus.menu_links(items, attributes, 0) }}
+  </ul>
+</nav>
 
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
