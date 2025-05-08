@@ -1,0 +1,13 @@
+{
+    "name": "umd-lib/umdds_sidebar_menu",
+    "description": "This module provides a customized sidebar menu for the UMD Libraries Design System theme.",
+    "type": "drupal-module",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "UMD Libraries"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
