@@ -8,6 +8,5 @@
             "name": "UMD Libraries"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "beta"
 }
