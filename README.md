@@ -8,6 +8,10 @@ This module provides a customized sidebar menu.
 This module contains markup only (no js or css), those should be provided
 by the theme or relevant Single Directory Component.
 
+Stable version 1.0.0
+
+Development version: 2.x
+
 ## Installation
 
 Clone this repo into your modules/custom/ directory or install
