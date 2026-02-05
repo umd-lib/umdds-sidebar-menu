@@ -25,16 +25,14 @@
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-<nav class="subnav umd-lib s-margin-general-small" aria-label="Sidebar Menu">
-  <ul>
-    {% if top_parent %}
-      <li class="subnav-parent">
-        <span class="i-chevron-down"></span>
-        <a href="{{ top_parent['#link'] }}" class="t-title-small">{{ top_parent['#title'] }}</a>
-      </li>
-    {% endif %}
-    {{ menus.menu_links(items, attributes, 0) }}
-  </ul>
+<nav class="subnav umd-lib s-margin-general-small" aria-label="{{ top_parent['#title'] }}">
+  {% if top_parent %}
+    <div class="subnav-parent">
+      <span class="i-chevron-down" aria-hidden="true"></span>
+      <a href="{{ top_parent['#link'] }}" class="t-title-small" aria-label="Back to {{ top_parent['#title'] }}">{{ top_parent['#title'] }}</a>
+    </div>
+  {% endif %}
+  {{ menus.menu_links(items, attributes, 0) }}
 </nav>
 
 {% macro menu_links(items, attributes, menu_level) %}
@@ -49,8 +47,7 @@
       {# {{ dump(item) }} #}
       <li{{ item.attributes.addClass(item.in_active_trail ? 'active-submenu' : '') }}>
         {% if item.in_active_trail %}
-          {% set tmp = '<span class="visually-hidden">The Current Page is </span>'~item.title %}
-          {% set link_text %}{{ tmp|raw }}{% endset %}
+          {% set link_text %}{{ item.title }}{% endset %}
           <div class='active-link'>
             {{ link(link_text, item.url, { 'aria-current':'page', 'class': 't-body-small t-interactive-sub' }) }}
           </div>
