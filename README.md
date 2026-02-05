@@ -8,9 +8,11 @@ This module provides a customized sidebar menu.
 This module contains markup only (no js or css), those should be provided
 by the theme or relevant Single Directory Component.
 
-Stable version 1.0.0
+Stable version 1.0.0 (main)
 
 Development version: 2.x
+
+[UMD Libraries Versioning Information](https://github.com/umd-lib/umd-drupal-core/tree/main)
 
 ## Installation
 
